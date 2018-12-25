@@ -21,7 +21,6 @@ class App extends Component {
     let text = this.state.text.split('').filter(c => c !== char).join('');
     let chars = this.state.chars.split('').filter(c => c !== char).join('');
     this.setState({ text: text, chars: chars });
-    document.getElementById('box-input').value = text; // update input value
   }
 
   render() {
@@ -35,7 +34,9 @@ class App extends Component {
         <input id="box-input"
           placeholder="Enter value"
           style={{padding: '5px'}} type="text"
+          value={this.state.text}
           onChange={(event) => this.textChangedHandler(event.target.value)} />
+        <p>{this.state.text}</p>
         <Validation size={this.state.text.length} />
         { chars }
       </div>
