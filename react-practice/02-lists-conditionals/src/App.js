@@ -31,7 +31,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input id="box-input"
+        <input
           placeholder="Enter value"
           style={{padding: '5px'}} type="text"
           value={this.state.text}
