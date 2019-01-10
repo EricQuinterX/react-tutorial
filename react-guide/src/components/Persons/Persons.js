@@ -6,6 +6,7 @@ export default class Persons extends PureComponent {
   constructor(props) {
     super(props);
     console.log("[Persons.js] Inside Constructor", props);
+    this.lastPersonRef = React.createRef();
   }
 
   componentWillMount() {
@@ -14,6 +15,7 @@ export default class Persons extends PureComponent {
 
   componentDidMount() {
     console.log("[Persons.js] Inside componentDidMount()");
+    this.lastPersonRef.current.focusInput();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,8 +42,10 @@ export default class Persons extends PureComponent {
     return this.props.persons.map((person, index) => {
       return <Person 
         key={person.id} 
+        position={index} 
         name={person.name} 
         age={person.age} 
+        ref={this.lastPersonRef}
         click={() => this.props.clicked(person.id)} 
         changed={(event) => this.props.changed(event, person.id)} />
     })
